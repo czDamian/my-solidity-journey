@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-//@author Damian Olebuezie
+//@author Damian 
 //@notice This shows an example of most common data types used in solidity
 
 contract DataTypes {
