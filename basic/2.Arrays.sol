@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-//@author Damian 
+//@author Damian
 //@notice This shows an example of how arrays are used in solidity
 
 contract Arrays {
