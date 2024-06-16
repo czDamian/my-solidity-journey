@@ -45,7 +45,7 @@ contract AboutMe {
     string public myName;
     uint public age;
 
-    function SetAboutMe(string memory _name, uint _age) public {
+    function setAboutMe(string memory _name, uint _age) public {
         myName = _name;
         age = _age;
     }
@@ -54,6 +54,6 @@ contract AboutMe {
 contract ModifyAboutMe {
     function Edit(address _CA, string memory _name, uint _age) public {
         AboutMe CA = AboutMe(_CA);
-        CA.SetAboutMe(_name, _age);
+        CA.setAboutMe(_name, _age);
     }
 }
