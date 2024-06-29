@@ -24,3 +24,34 @@ contract sendMoney {
         emit fundsReceived(msg.value, msg.sender);
     }
 }
+
+contract sendAndReceive {
+    address payable owner;
+
+    constructor() {
+        owner = payable(msg.sender);
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "You are not the owner");
+        _;
+    }
+
+    function deposit() public payable {
+        require(msg.value >= 1 wei, "Send at least 0.001ETH");
+    }
+
+    function withdraw() public onlyOwner {
+        uint amount = address(this).balance;
+        require(amount > 0, "Insufficient balance");
+        (bool success, ) = owner.call{value: amount}("");
+        require(success, "Failed to withdraw");
+    }
+
+    function transferTo(address payable _to, uint amount) public {
+        uint balance = address(owner).balance;
+        require(amount <= balance, "Insufficient balance");
+        (bool success, ) = _to.call{value: amount}("");
+        require(success, "Failed to send ETH");
+    }
+}
